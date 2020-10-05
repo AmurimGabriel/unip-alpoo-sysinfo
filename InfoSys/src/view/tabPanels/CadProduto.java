@@ -1,5 +1,7 @@
 package view.tabPanels;
 
+import model.Produto;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -21,7 +23,7 @@ public class CadProduto extends JPanel {
 
         lbProDescricao = new JLabel("Descricao: ");
         tfProDescricao = new JTextField(25);
-        tfProDescricao.setPreferredSize(new Dimension(350,25));
+        tfProDescricao.setPreferredSize(new Dimension(350, 25));
 
         JPanel pnProDescricao = new JPanel();
         pnProDescricao.add(lbProDescricao);
@@ -29,7 +31,11 @@ public class CadProduto extends JPanel {
 
         lbProEstoque = new JLabel("Estoque: ");
         spProEstoque = new JSpinner();
-        spProEstoque.setPreferredSize(new Dimension(100,25));
+        spProEstoque.setPreferredSize(new Dimension(100, 25));
+        spProEstoque.addChangeListener(e -> {
+            int v = (int) spProEstoque.getValue();
+            if (v < 0) spProEstoque.setValue(0);
+        });
 
         lbProAtivo = new JLabel("Ativo");
         cbProAtivo = new JCheckBox();
@@ -45,12 +51,12 @@ public class CadProduto extends JPanel {
 
         lbProCusto = new JLabel("Custo: ");
         tfProCusto = new JTextField(10);
-        tfProCusto.setPreferredSize(new Dimension(120,25));
+        tfProCusto.setPreferredSize(new Dimension(120, 25));
 
         lbProVenda = new JLabel("Venda: ");
         lbProVenda.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 0));
         tfProVenda = new JTextField(10);
-        tfProVenda.setPreferredSize(new Dimension(120,25));
+        tfProVenda.setPreferredSize(new Dimension(120, 25));
 
         JPanel pnProPreco = new JPanel();
         pnProPreco.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Preço",
@@ -64,6 +70,25 @@ public class CadProduto extends JPanel {
         this.add(pnProDescricao, BorderLayout.NORTH);
         this.add(pnProEstoqueAtivo, BorderLayout.CENTER);
         this.add(pnProPreco, BorderLayout.SOUTH);
+    }
+
+    public void gravarProduto() {
+        Produto produto = new Produto(
+                tfProDescricao.getText(),
+                (int) spProEstoque.getValue(),
+                cbProAtivo.isSelected(),
+                Double.parseDouble(tfProVenda.getText()),
+                Double.parseDouble(tfProCusto.getText())
+        );
+        System.out.println(produto);
+    }
+
+    public void limparProduto() {
+        tfProDescricao.setText("");
+        spProEstoque.setValue(0);
+        cbProAtivo.setSelected(false);
+        tfProCusto.setText("");
+        tfProVenda.setText("");
     }
 
 }

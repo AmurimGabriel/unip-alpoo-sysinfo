@@ -37,7 +37,7 @@ public class TelaCadastro extends JFrame {
         /* Buscando imagem e atribuindo um label vazio que ficará a esquerda */
         ImageIcon imgLogo = new ImageIcon("src/resources/InfoSysLogo-Pequeno.jpeg");
         lbLogo = new JLabel(imgLogo);
-        lbLogo.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        lbLogo.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         pnTitulo.add(lbLogo, BorderLayout.WEST);
         pnTitulo.add(lbTitulo, BorderLayout.CENTER);
@@ -79,11 +79,23 @@ public class TelaCadastro extends JFrame {
         this.getRootPane().setBorder(BorderFactory.createEmptyBorder(7, 7, 7, 7));
         this.setResizable(false);
         this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     private void acaoBotoes() {
-        btLimpar.addActionListener(e -> pnCliente.limparCliente());
-        btGravar.addActionListener(e -> pnCliente.gravaCliente());
+        btLimpar.addActionListener(e -> {
+            if (pnTela.getSelectedComponent() == pnCliente)
+                pnCliente.limparCliente();
+            else if (pnTela.getSelectedComponent() == pnProduto);
+                pnProduto.limparProduto();
+        });
+
+        btGravar.addActionListener(e -> {
+            if (pnTela.getSelectedComponent() == pnCliente)
+                pnCliente.gravarCliente();
+            else if (pnTela.getSelectedComponent() == pnProduto);
+                pnProduto.gravarProduto();
+        });
     }
 
 

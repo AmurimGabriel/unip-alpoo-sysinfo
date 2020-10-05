@@ -61,7 +61,7 @@ public class CadCliente extends JPanel {
         return c;
     }
 
-    public void gravaCliente() {
+    public void gravarCliente() {
         Cliente cliente = new Cliente(
                 tfCliNome.getText(),
                 tfCliCPF.getText(),
