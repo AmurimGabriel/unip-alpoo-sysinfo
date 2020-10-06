@@ -7,6 +7,7 @@ import view.tabPanels.CadTecnico;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.util.Locale;
 
 public class TelaCadastro extends JFrame {
 

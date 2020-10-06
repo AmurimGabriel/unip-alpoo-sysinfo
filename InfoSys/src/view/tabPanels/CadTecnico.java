@@ -14,6 +14,7 @@ public class CadTecnico extends JPanel {
     public CadTecnico() {
         initComponents();
         setMask();
+        limparTecnico();
     }
 
     private void initComponents() {
@@ -57,8 +58,20 @@ public class CadTecnico extends JPanel {
         return c;
     }
 
+    public void gravarTecnico(){
+
+    }
+
+    public void limparTecnico(){
+        tfTecNome.setText("");
+        tfTecSalario.setValue(0);
+        tfTecValorHora.setValue(0);
+    }
+
     private void setMask() {
         tfTecSalario.setFormatterFactory(Mascara.getValorMask());
         tfTecValorHora.setFormatterFactory(Mascara.getValorMask());
     }
+
+
 }

@@ -16,6 +16,7 @@ public class CadCliente extends JPanel {
         initComponents();
         tfCliNome.requestFocus();
         setMask();
+        limparCliente();
     }
 
     private void initComponents() {

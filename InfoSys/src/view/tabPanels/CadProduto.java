@@ -6,6 +6,7 @@ import util.Mascara;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Locale;
 
 public class CadProduto extends JPanel {
 
@@ -18,6 +19,7 @@ public class CadProduto extends JPanel {
     public CadProduto() {
         initComponents();
         setMask();
+        limparProduto();
     }
 
     private void initComponents() {
@@ -76,12 +78,16 @@ public class CadProduto extends JPanel {
     }
 
     public void gravarProduto() {
+        double venda = Double.parseDouble(tfProVenda.getText().replace(",","."));
+        double custo = Double.parseDouble(tfProCusto.getText().replace(",","."));
+        int estoque = (int) spProEstoque.getValue();
+
         Produto produto = new Produto(
                 tfProDescricao.getText(),
-                (int) spProEstoque.getValue(),
+                estoque,
                 cbProAtivo.isSelected(),
-                Double.parseDouble(tfProVenda.getText()),
-                Double.parseDouble(tfProCusto.getText())
+                venda,
+                custo
         );
         System.out.println(produto);
     }
