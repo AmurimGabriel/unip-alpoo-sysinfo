@@ -1,6 +1,7 @@
 package view.tabPanels;
 
 import model.Produto;
+import util.Mascara;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -9,12 +10,14 @@ import java.awt.*;
 public class CadProduto extends JPanel {
 
     private JLabel lbProDescricao, lbProEstoque, lbProAtivo, lbProCusto, lbProVenda;
-    private JTextField tfProDescricao, tfProCusto, tfProVenda;
+    private JTextField tfProDescricao;
+    private JFormattedTextField tfProCusto = null, tfProVenda = null;
     private JSpinner spProEstoque;
     private JCheckBox cbProAtivo;
 
     public CadProduto() {
         initComponents();
+        setMask();
     }
 
     private void initComponents() {
@@ -50,12 +53,12 @@ public class CadProduto extends JPanel {
         pnProEstoqueAtivo.add(lbProAtivo);
 
         lbProCusto = new JLabel("Custo: ");
-        tfProCusto = new JTextField(10);
+        tfProCusto = new JFormattedTextField();
         tfProCusto.setPreferredSize(new Dimension(120, 25));
 
         lbProVenda = new JLabel("Venda: ");
         lbProVenda.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 0));
-        tfProVenda = new JTextField(10);
+        tfProVenda = new JFormattedTextField();
         tfProVenda.setPreferredSize(new Dimension(120, 25));
 
         JPanel pnProPreco = new JPanel();
@@ -87,8 +90,12 @@ public class CadProduto extends JPanel {
         tfProDescricao.setText("");
         spProEstoque.setValue(0);
         cbProAtivo.setSelected(false);
-        tfProCusto.setText("");
-        tfProVenda.setText("");
+        tfProCusto.setValue(0);
+        tfProVenda.setValue(0);
     }
 
+    public void setMask() {
+        tfProCusto.setFormatterFactory(Mascara.getValorMask());
+        tfProVenda.setFormatterFactory(Mascara.getValorMask());
+    }
 }

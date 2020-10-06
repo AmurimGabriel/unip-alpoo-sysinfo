@@ -2,6 +2,7 @@ package view;
 
 import view.tabPanels.CadCliente;
 import view.tabPanels.CadProduto;
+import view.tabPanels.CadTecnico;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -19,6 +20,28 @@ public class TelaCadastro extends JFrame {
 
     public TelaCadastro() {
         initComponents();
+    }
+
+    public static void main(String[] args) {
+        new TelaCadastro();
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
     }
 
     private void initComponents() {
@@ -56,7 +79,7 @@ public class TelaCadastro extends JFrame {
         pnServico = new JPanel();
         pnTela.addTab("Serviços", pnServico);
 
-        pnTecnico = new JPanel();
+        pnTecnico = new CadTecnico();
         pnTela.addTab("Técnicos", pnTecnico);
         /* FIM PAINEL DE ABAS */
 
@@ -86,38 +109,15 @@ public class TelaCadastro extends JFrame {
         btLimpar.addActionListener(e -> {
             if (pnTela.getSelectedComponent() == pnCliente)
                 pnCliente.limparCliente();
-            else if (pnTela.getSelectedComponent() == pnProduto);
-                pnProduto.limparProduto();
+            else if (pnTela.getSelectedComponent() == pnProduto) ;
+            pnProduto.limparProduto();
         });
 
         btGravar.addActionListener(e -> {
             if (pnTela.getSelectedComponent() == pnCliente)
                 pnCliente.gravarCliente();
-            else if (pnTela.getSelectedComponent() == pnProduto);
-                pnProduto.gravarProduto();
+            if (pnTela.getSelectedComponent() == pnProduto) ;
+            pnProduto.gravarProduto();
         });
-    }
-
-
-    public static void main(String[] args) {
-        new TelaCadastro();
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
     }
 }

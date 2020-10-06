@@ -1,6 +1,7 @@
 package view.tabPanels;
 
 import model.Cliente;
+import util.Mascara;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,15 +9,17 @@ import java.awt.*;
 public class CadCliente extends JPanel {
 
     private JLabel lbCliNome, lbCliCPF, lbCliFone, lbCliCelular, lbCliEmail;
-    private JTextField tfCliNome, tfCliCPF, tfCliFone, tfCliCelular, tfCliEmail;
+    private JTextField tfCliNome, tfCliEmail;
+    private JFormattedTextField tfCliCPF, tfCliFone, tfCliCelular;
 
     public CadCliente() {
         initComponents();
         tfCliNome.requestFocus();
+        setMask();
     }
 
     private void initComponents() {
-        this.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
+        this.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         lbCliNome = new JLabel("Nome: ");
         lbCliCPF = new JLabel("CPF: ");
@@ -25,9 +28,9 @@ public class CadCliente extends JPanel {
         lbCliEmail = new JLabel("Email: ");
 
         tfCliNome = new JTextField(25);
-        tfCliCPF = new JTextField(25);
-        tfCliFone = new JTextField(25);
-        tfCliCelular = new JTextField(25);
+        tfCliCPF = new JFormattedTextField();
+        tfCliFone = new JFormattedTextField();
+        tfCliCelular = new JFormattedTextField();
         tfCliEmail = new JTextField(25);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -78,6 +81,12 @@ public class CadCliente extends JPanel {
         tfCliFone.setText("");
         tfCliCelular.setText("");
         tfCliEmail.setText("");
+    }
+
+    private void setMask() {
+        tfCliCPF.setFormatterFactory(Mascara.getCpfMask());
+        tfCliFone.setFormatterFactory(Mascara.getFoneFixoMask());
+        tfCliCelular.setFormatterFactory(Mascara.getCelularMask());
     }
 
 }
