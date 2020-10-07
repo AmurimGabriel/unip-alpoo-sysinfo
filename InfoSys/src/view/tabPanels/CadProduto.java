@@ -6,7 +6,9 @@ import util.Mascara;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.util.Locale;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 public class CadProduto extends JPanel {
 
@@ -78,8 +80,14 @@ public class CadProduto extends JPanel {
     }
 
     public void gravarProduto() {
-        double venda = Double.parseDouble(tfProVenda.getText().replace(",","."));
-        double custo = Double.parseDouble(tfProCusto.getText().replace(",","."));
+        NumberFormat nf = new DecimalFormat("#,###.00");
+        double venda = 0, custo = 0;
+
+        try {
+            venda = nf.parse(tfProVenda.getText()).doubleValue();
+            custo = nf.parse(tfProCusto.getText()).doubleValue();
+        } catch (ParseException e) {e.printStackTrace();}
+
         int estoque = (int) spProEstoque.getValue();
 
         Produto produto = new Produto(

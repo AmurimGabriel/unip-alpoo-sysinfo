@@ -5,11 +5,7 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.text.Format;
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.Currency;
-import java.util.Locale;
 
 public class Mascara {
     public static DefaultFormatterFactory getCpfMask() {

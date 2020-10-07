@@ -7,7 +7,6 @@ import view.tabPanels.CadTecnico;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.util.Locale;
 
 public class TelaCadastro extends JFrame {
 
@@ -110,15 +109,16 @@ public class TelaCadastro extends JFrame {
         btLimpar.addActionListener(e -> {
             if (pnTela.getSelectedComponent() == pnCliente)
                 pnCliente.limparCliente();
-            else if (pnTela.getSelectedComponent() == pnProduto) ;
-            pnProduto.limparProduto();
+            else if (pnTela.getSelectedComponent() == pnProduto)
+                pnProduto.limparProduto();
         });
 
         btGravar.addActionListener(e -> {
             if (pnTela.getSelectedComponent() == pnCliente)
                 pnCliente.gravarCliente();
-            if (pnTela.getSelectedComponent() == pnProduto) ;
-            pnProduto.gravarProduto();
+            else if (pnTela.getSelectedComponent() == pnProduto) {
+                pnProduto.gravarProduto();
+            }
         });
     }
 }

@@ -58,11 +58,11 @@ public class CadTecnico extends JPanel {
         return c;
     }
 
-    public void gravarTecnico(){
+    public void gravarTecnico() {
 
     }
 
-    public void limparTecnico(){
+    public void limparTecnico() {
         tfTecNome.setText("");
         tfTecSalario.setValue(0);
         tfTecValorHora.setValue(0);
