@@ -1,4 +1,4 @@
-package view.tabPanels;
+package view.tabPanelsCadastro;
 
 import model.Cliente;
 import util.Mascara;

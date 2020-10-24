@@ -1,8 +1,8 @@
 package view;
 
-import view.tabPanels.CadCliente;
-import view.tabPanels.CadProduto;
-import view.tabPanels.CadTecnico;
+import view.tabPanelsCadastro.CadCliente;
+import view.tabPanelsCadastro.CadProduto;
+import view.tabPanelsCadastro.CadTecnico;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;

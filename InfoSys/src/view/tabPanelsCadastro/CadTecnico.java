@@ -1,9 +1,13 @@
-package view.tabPanels;
+package view.tabPanelsCadastro;
 
+import model.Tecnico;
 import util.Mascara;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 public class CadTecnico extends JPanel {
 
@@ -59,7 +63,21 @@ public class CadTecnico extends JPanel {
     }
 
     public void gravarTecnico() {
+        NumberFormat nf = new DecimalFormat("#,###.00");
+        double salario = 0, valorHora = 0;
 
+        try {
+            salario = nf.parse(tfTecSalario.getText()).doubleValue();
+            valorHora = nf.parse(tfTecValorHora.getText()).doubleValue();
+        } catch (ParseException e) {e.printStackTrace();}
+
+        Tecnico tecnico = new Tecnico(
+                tfTecNome.getText(),
+                salario,
+                valorHora
+        );
+
+        System.out.println(tecnico);
     }
 
     public void limparTecnico() {

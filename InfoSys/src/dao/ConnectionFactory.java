@@ -1,8 +1,6 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ConnectionFactory {
 
@@ -26,5 +24,25 @@ public class ConnectionFactory {
             throw new RuntimeException("Erro ao fechar conexão com o banco de dados. \n" + e);
         }
 
+    }
+
+    public static void closeConnection(Connection con, PreparedStatement pst) {
+        try{
+            if (pst != null)
+                pst.close();
+            closeConnection(con);
+        } catch (SQLException throwables) {
+            throw new RuntimeException("Erro ao fechar o STATEMENT.");
+        }
+    }
+
+    public static void closeConnection(Connection con, PreparedStatement pst, ResultSet rs) {
+        try{
+            if (rs != null)
+                rs.close();
+            closeConnection(con, pst);
+        } catch (SQLException throwables) {
+            throw new RuntimeException("Erro ao fechar o RESULT SET.");
+        }
     }
 }

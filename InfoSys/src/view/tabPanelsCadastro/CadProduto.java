@@ -1,4 +1,4 @@
-package view.tabPanels;
+package view.tabPanelsCadastro;
 
 import model.Produto;
 import util.Mascara;
